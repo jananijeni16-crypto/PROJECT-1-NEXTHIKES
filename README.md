@@ -744,7 +744,9 @@ These findings provide a foundation for better fleet planning, customer engageme
 👩‍💻 Author
 
 Janani B
+
 Data Science Intern
+
 Nexthikes IT Solutions
 
 Project: Bike Sharing Demand Analysis Using Excel
