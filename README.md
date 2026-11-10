@@ -1,1 +1,748 @@
-# PROJECT-1-NEXTHIKES
+# 🚲 Bike Sharing Demand Analysis Using Excel
+
+**Tools:** Microsoft Excel, Power Query, PivotTables, PivotCharts, Excel Dashboard  
+
+## 📌 1. Project Overview
+
+The Bike Sharing Demand Analysis project focuses on understanding bike rental patterns and identifying the factors that influence the demand for shared bicycles.
+
+The main objective is to analyse historical bike-sharing data using Microsoft Excel and transform raw data into meaningful business insights through data cleaning, data transformation, exploratory data analysis, statistical analysis, forecasting, anomaly detection and dashboard visualization.
+
+The analysis explores how bike rental demand changes based on different factors, including:
+
+- Hour of the day
+- Weekday and weekend
+- Holiday and non-holiday periods
+- Weather conditions
+- Temperature and humidity
+- Wind speed
+- Customer types (Casual and Registered)
+
+The project uses Excel-based analytical techniques to identify demand patterns, understand customer behaviour and provide recommendations for better fleet management and operational planning.
+
+## 🎯 2. Project Objectives
+
+The major objectives of this project are:
+
+1. Understand the structure and characteristics of the bike-sharing dataset.
+2. Clean and prepare raw data for analysis.
+3. Combine multiple datasets into a consolidated dataset.
+4. Analyse hourly, daily and weekday demand patterns.
+5. Identify peak and off-peak bike rental hours.
+6. Understand customer behaviour by comparing casual and registered users.
+7. Examine the relationship between weather conditions and bike rental demand.
+8. Perform descriptive statistical analysis.
+9. Conduct Pearson correlation analysis to identify relationships between variables.
+10. Build PivotTables and PivotCharts for summarizing demand patterns.
+11. Apply forecasting techniques to estimate future demand.
+12. Identify unusual demand observations using anomaly detection.
+13. Develop an interactive Excel dashboard to communicate key business insights.
+
+## 🛠️ 3. Tools and Technologies Used
+
+| Tool / Technique | Purpose |
+|---|---|
+| Microsoft Excel | Data cleaning, calculations, analysis and visualization |
+| Power Query | Data preparation and transformation workflow |
+| PivotTables | Summarizing data by different categories |
+| PivotCharts | Visualizing demand patterns and comparisons |
+| Excel Formulas | Calculations and derived columns |
+| Descriptive Statistics | Understanding data distribution |
+| Pearson Correlation | Measuring relationships between variables |
+| Excel Forecasting | Estimating future demand |
+| Anomaly Detection | Identifying unusual demand observations |
+| Excel Dashboard | Presenting KPIs and analytical findings |
+
+## 📂 4. Project Structure
+
+The repository contains the following project files:
+
+```text
+PROJECT-1-NEXTHIKES/
+│
+├── Nexthikes_Project 1.xlsm
+│
+├── Bike_Sharing_Demand_Analysis_PPT.pptx
+│
+├── README.md
+│
+├── requirements.txt
+│
+└── LICENSE
+```
+
+### File Description
+
+| File Name | Description |
+|---|---|
+| `Nexthikes_Project 1.xlsm` | Main Excel workbook containing raw data, cleaned datasets, analysis, PivotTables, charts, forecasting, anomaly detection and dashboard. |
+| `Bike_Sharing_Demand_Analysis_PPT.pptx` | Project presentation explaining the methodology, analysis, findings and recommendations. |
+| `README.md` | Project documentation. |
+| `requirements.txt` | Software requirements and dependency information. |
+| `LICENSE` | Project license. |
+
+## 📊 5. Dataset Description
+
+The primary dataset used for analysis is available in the `Final_DataSet` worksheet of the Excel workbook.
+
+### Dataset Overview
+
+| Attribute | Description |
+|---|---|
+| Dataset | Bike Sharing Demand Dataset |
+| Total Records | 1,000 |
+| Total Analytical Columns | 16 |
+| Unique Dates | 45 |
+| Date Range | 01 January 2011 – 14 February 2011 |
+| Hour Range | 0–23 |
+| Target Variable | Total_Count |
+| Customer Segments | Casual and Registered |
+
+The final dataset contains 13 core time, environmental and customer-demand fields, along with 3 additional derived categorical columns.
+
+### 5.1 Data Dictionary
+
+The following table explains the columns used in the final analytical dataset.
+
+| Column Name | Description |
+|---|---|
+| `instant` | Unique identification number for each hourly record. |
+| `Date` | Date on which the bike-sharing demand was recorded. |
+| `Hour` | Hour of the day, ranging from 0 to 23. |
+| `Holiday` | Indicates whether the recorded date is a holiday. |
+| `Weekday` | Day of the week, such as Monday, Tuesday or Sunday. |
+| `Weathersit` | Weather condition category associated with the observation. |
+| `Temp` | Normalized temperature value. |
+| `Assumed_Temp` | Normalized apparent or feels-like temperature value. |
+| `Humidity` | Normalized humidity measurement. |
+| `Windspeed` | Normalized wind-speed measurement. |
+| `Casual_Customers` | Number of rides generated by casual customers. |
+| `Registered_Customers` | Number of rides generated by registered customers. |
+| `Total_Count` | Total number of rides, calculated from casual and registered customers. |
+| `Day_type` | Derived category identifying Weekday or Weekend. |
+| `Time_category` | Derived category identifying Morning Peak, Evening Peak or Off-Peak. |
+| `Weather_Label` | Readable weather classification corresponding to the weather category. |
+
+### 5.2 Weather Categories
+
+The dataset contains four weather classifications:
+
+| Weather Category | Weather Label | Description |
+|---|---|---|
+| Normal | Clear/Few Clouds | Clear or relatively normal weather conditions. |
+| Yellow Alert | Mist/Cloudy | Misty or cloudy conditions. |
+| Orange Alert | Light Rain/Snow | Light rain or snow conditions. |
+| Red Alert | Heavy Rain/Fog | Heavy rain or fog conditions. |
+
+### 5.3 Derived Columns
+
+Three additional columns were created to support better analysis.
+
+**1. Day_type**
+
+Categorizes records into:
+- Weekday
+- Weekend
+
+**2. Time_category**
+
+Categorizes the hours into:
+
+| Category | Time |
+|---|---|
+| Morning Peak | 07:00–09:00 |
+| Evening Peak | 17:00–19:00 |
+| Off-Peak | All remaining hours |
+
+**3. Weather_Label**
+
+Converts weather categories into understandable labels to simplify comparisons and visualizations.
+
+> **Dataset limitation:** The dataset contains 1,000 hourly records covering 45 dates, not a complete year of data. Some dates contain fewer than 24 hourly records. Therefore, daily ride totals represent only the available hourly observations and should be interpreted alongside record coverage.
+
+## 📑 6. Excel Workbook Structure
+
+The Excel workbook contains multiple worksheets designed for data preparation, analysis, statistical calculations and visualization.
+
+| Worksheet Name | Purpose |
+|---|---|
+| `Dataset_1` | Contains the first portion of the source dataset. |
+| `Cleaned_dataset_1` | Contains cleaned and standardized fields from Dataset 1. |
+| `Dataset_2` | Contains the second portion of the source dataset, including customer and environmental information. |
+| `Cleaned_dataset_2` | Contains cleaned fields from Dataset 2. |
+| `Dataset_3` | Contains the additional source-data portion. |
+| `Cleaned_dataset_3` | Contains the cleaned version of Dataset 3. |
+| `Dataset_A(D1+D2)` | Combines the relevant data portions for consolidated analysis. |
+| `Final_DataSet` | Main consolidated dataset containing 1,000 records and 16 analytical columns. |
+| `PivotTables` | Contains summary calculations and category-based analysis. |
+| `Pearson Correlation Heatmap` | Displays correlations among environmental and demand variables. |
+| `Operational Risk Heatmap` | Compares demand across weather and time categories. |
+| `Hourly Demand vs. Weather Condi` | Analyses hourly demand under different weather conditions. |
+| `Hourly Demand vs. Day Type` | Compares hourly demand between weekdays and weekends. |
+| `Hourly Profile by User Segment` | Analyses casual and registered customer usage by hour. |
+| `Weather Category Breakdown & Us` | Compares customer segments across weather categories. |
+| `Windspeed Binned Boxplot` | Examines demand distribution across wind-speed ranges. |
+| `Demand Frequency Distribution` | Displays the frequency distribution of hourly demand. |
+| `Time Category vs Day Type` | Compares peak and off-peak demand across day types. |
+| `Daily Time Series Demand Trend` | Displays daily recorded demand over time. |
+| `Forecasting_Analysis` | Contains historical demand, forecast calculations and confidence intervals. |
+| `Anomaly_Analysis` | Identifies unusual daily demand observations using statistical thresholds. |
+| `Descriptive Statistics` | Contains statistical summaries of demand and environmental variables. |
+| `Dashboard` | Presents the main analytical findings through eight charts. |
+
+## 🔄 7. Detailed Project Workflow
+
+The project follows a structured data analytics workflow, beginning with raw data inspection and ending with business recommendations.
+
+### Step 1: Data Understanding and Inspection
+
+The first step involved understanding the structure of the available datasets.
+
+The workbook contained multiple source-data worksheets with information related to:
+
+- Date and time
+- Weather conditions
+- Temperature
+- Humidity
+- Wind speed
+- Casual customers
+- Registered customers
+- Total bike rentals
+
+The individual datasets were examined to understand their columns, data types and relationships.
+
+**Objective:** Understand the available data and identify the fields required for demand analysis.
+
+### Step 2: Data Cleaning
+
+The raw datasets were reviewed and cleaned using Excel-based data preparation techniques.
+
+The workbook contains separate cleaned worksheets:
+
+- `Cleaned_dataset_1`
+- `Cleaned_dataset_2`
+- `Cleaned_dataset_3`
+
+The cleaned datasets use standardized field names and a consistent structure for further analysis.
+
+The data preparation process focused on:
+
+- Reviewing column names.
+- Checking data consistency.
+- Standardizing field names.
+- Preparing date and time fields.
+- Organizing customer and weather variables.
+- Preparing datasets for consolidation.
+
+**Objective:** Improve data consistency and prepare the source data for accurate analysis.
+
+### Step 3: Data Consolidation
+
+After cleaning, the relevant data portions were combined into consolidated worksheets.
+
+The workbook contains:
+
+- `Dataset_A(D1+D2)`
+- `Final_DataSet`
+
+The `Final_DataSet` worksheet serves as the main source for subsequent analysis.
+
+It contains 1,000 records with 16 analytical columns, including the original fields and derived categories.
+
+**Objective:** Create a consolidated dataset that can be used consistently across all analytical worksheets.
+
+### Step 4: Data Validation
+
+Data validation was performed to check the reliability of the consolidated dataset.
+
+The project presentation reports the following validation results:
+
+| Validation Check | Result |
+|---|---|
+| Missing values in core fields | 0 |
+| Duplicate instant IDs | 0 |
+| Ride identity mismatches | 0 |
+| Unique dates | 45 |
+
+The main validation formula is:
+
+```excel
+=Casual_Customers+Registered_Customers
+```
+
+The calculated value is checked against `Total_Count`.
+
+The validation rule is:
+
+```text
+Casual_Customers + Registered_Customers = Total_Count
+```
+
+All 1,000 analysed records passed the ride-count identity check.
+
+**Objective:** Ensure that the consolidated data is internally consistent before performing statistical analysis.
+
+### Step 5: Feature Engineering and Categorization
+
+Additional analytical columns were created to simplify comparisons.
+
+The three derived features are:
+
+- `Day_type`
+- `Time_category`
+- `Weather_Label`
+
+These classifications help analyse bike-sharing demand across different business categories.
+
+For example, instead of examining all 24 individual hours separately, the time category makes it possible to compare morning peak, evening peak and off-peak demand.
+
+**Objective:** Convert raw variables into meaningful categories for business analysis.
+
+### Step 6: Key Performance Indicator Calculation
+
+Important KPIs were identified to measure overall demand and customer behaviour.
+
+| KPI | Calculation |
+|---|---|
+| Total Rides | SUM(Total_Count) |
+| Average Rides | AVERAGE(Total_Count) |
+| Registered Customer Share | Registered Rides / Total Rides |
+| Casual Customer Share | Casual Rides / Total Rides |
+| Peak Hour | Hour with the highest average Total_Count |
+| Weather Impact | Average rides by weather category |
+| Outlier Count | Number of observations outside IQR limits |
+
+These KPIs are used in the analysis and dashboard.
+
+**Objective:** Establish measurable indicators for understanding bike-sharing demand.
+
+### Step 7: Exploratory Data Analysis (EDA)
+
+Exploratory Data Analysis was performed to identify demand patterns and understand customer behaviour.
+
+The following analyses were conducted.
+
+**A. Daily Demand Analysis**
+
+Daily ride totals were calculated by grouping hourly records by date.
+
+Key observations:
+
+- Average recorded daily demand: 1,296 rides.
+- Highest recorded daily demand: 1,985 rides on 25 January.
+- Lowest recorded daily demand: 151 rides on 14 February.
+
+A daily time-series chart was used to understand changes in recorded demand.
+
+**B. Hourly Demand Analysis**
+
+The average number of rides was calculated for each hour of the day.
+
+Key observations:
+
+- Highest average demand: 17:00 (140.2 rides).
+- Second-highest average demand: 08:00 (128.3 rides).
+- Lowest average demand: 04:00 (2.2 rides).
+
+This analysis highlights the importance of morning and evening commute periods.
+
+**C. Weekday Demand Analysis**
+
+Average hourly demand was compared across the seven weekdays.
+
+| Weekday | Average Rides |
+|---|---:|
+| Monday | 56.7 |
+| Tuesday | 66.0 |
+| Wednesday | 61.4 |
+| Thursday | 67.7 |
+| Friday | 65.9 |
+| Saturday | 46.7 |
+| Sunday | 49.5 |
+
+Thursday recorded the highest average demand, while Saturday recorded the lowest.
+
+**D. Weekday vs Weekend Analysis**
+
+Demand was compared using the derived `Day_type` column.
+
+| Day Type | Average Rides |
+|---|---:|
+| Weekday | 63.3 |
+| Weekend | 48.1 |
+
+The analysis indicates higher average hourly demand during weekdays in the sample.
+
+**E. Weather-Based Demand Analysis**
+
+Average ride counts were compared across weather categories.
+
+| Weather Condition | Average Rides | Records |
+|---|---:|---:|
+| Clear/Few Clouds | 61.7 | 606 |
+| Mist/Cloudy | 58.6 | 309 |
+| Light Rain/Snow | 33.2 | 84 |
+| Heavy Rain/Fog | 36.0 | 1 |
+
+Demand was lower in the light rain/snow category compared with normal weather conditions.
+
+The heavy rain/fog category has only one observation, so its result is not sufficient for a reliable general conclusion.
+
+**F. Customer Segment Analysis**
+
+Customer demand was divided into casual and registered users.
+
+| Customer Type | Total Rides | Percentage |
+|---|---:|---:|
+| Registered Customers | 53,383 | 91.6% |
+| Casual Customers | 4,921 | 8.4% |
+| Total | 58,304 | 100% |
+
+Registered customers contribute the majority of bike-sharing rides.
+
+**Objective of EDA:** Identify patterns and relationships that can support better fleet planning and customer engagement strategies.
+
+### Step 8: Descriptive Statistical Analysis
+
+Descriptive statistics were calculated to understand the distribution of hourly demand.
+
+The `Descriptive Statistics` worksheet includes measures such as:
+
+- Mean
+- Median
+- Mode
+- Standard deviation
+- Variance
+- Minimum
+- Maximum
+- Range
+- Quartiles
+- Skewness
+- Kurtosis
+
+Key statistics for `Total_Count`:
+
+| Statistical Measure | Value |
+|---|---:|
+| Count | 1,000 |
+| Mean | 58.3 |
+| Median | 49 |
+| Standard Deviation | 51.0 |
+| Minimum | 1 |
+| Maximum | 249 |
+| Q1 | 16 |
+| Q3 | 83 |
+
+The mean is higher than the median, indicating a right-skewed demand distribution with some higher-demand hourly observations.
+
+**Objective:** Understand the distribution, variation and spread of bike rental demand.
+
+### Step 9: Pearson Correlation Analysis
+
+Pearson correlation analysis was performed to understand the linear relationships between environmental variables and bike rental demand.
+
+The correlation analysis includes:
+
+- Temperature
+- Apparent temperature
+- Humidity
+- Wind speed
+- Casual customers
+- Registered customers
+- Total demand
+
+The presentation reports the following relationships with total demand:
+
+| Variable | Correlation with Total_Count |
+|---|---:|
+| Temperature | +0.23 |
+| Humidity | -0.25 |
+| Windspeed | +0.10 |
+
+Interpretation:
+
+- Temperature has a positive but relatively modest relationship with demand.
+- Humidity has a negative relationship with demand.
+- Windspeed has a weak positive relationship with demand.
+
+A Pearson correlation heatmap was used to present these relationships visually.
+
+**Objective:** Identify variables that are associated with bike-sharing demand.
+
+**Note:** Correlation does not establish causation. Other factors such as time, weekday and weather may influence these relationships.
+
+### Step 10: PivotTables and PivotCharts
+
+PivotTables were created to summarize large datasets into meaningful categories.
+
+The analysis uses:
+
+**Rows:**
+- Weekday
+- Weather category
+- Hour
+- Time category
+
+**Values:**
+- Average of Total_Count
+- Sum of Total_Count
+- Count of instant
+
+**Filters and slicers:**
+- Date
+- Hour
+- Holiday
+
+PivotCharts were created to visualize the summarized information.
+
+The project uses:
+
+| Chart Type | Purpose |
+|---|---|
+| Column Chart | Compare hourly demand. |
+| Clustered Bar Chart | Compare weekday and weather demand. |
+| Line Chart | Analyse daily demand trends. |
+| Stacked Column Chart | Compare casual and registered customer segments. |
+| Heatmap | Identify demand patterns across two categories. |
+| Boxplot-style Chart | Examine demand distribution across wind-speed ranges. |
+
+**Objective:** Make the analysis easier to interpret through summarized data and visual comparisons.
+
+### Step 11: Demand Forecasting
+
+Forecasting was performed using the `Forecasting_Analysis` worksheet.
+
+The workbook uses Excel forecasting functions:
+
+- `FORECAST.ETS`
+- `FORECAST.ETS.CONFINT`
+
+The forecast analysis uses historical daily demand values to estimate future demand and calculate confidence intervals.
+
+The project presentation also compares two simple demand scenarios:
+
+| Forecasting Method | Average Daily Rides |
+|---|---:|
+| Linear Trend Scenario | 1,393 |
+| Recent 7-Day Mean Baseline | 1,376 |
+
+The linear trend provides a projected demand scenario, while the recent seven-day mean provides a baseline for comparison.
+
+**Objective:** Explore how historical demand patterns can support short-term planning.
+
+**Limitation:** The forecasting results are illustrative because the dataset covers only 45 dates and contains incomplete daily hourly coverage. Production forecasting requires more complete historical data and chronological backtesting.
+
+### Step 12: Anomaly Detection
+
+Anomaly detection was performed to identify unusual demand observations.
+
+The project uses two different statistical approaches.
+
+**A. Interquartile Range (IQR) Method**
+
+The presentation applies IQR-based screening to the 1,000 hourly records.
+
+The formula is:
+
+```text
+IQR = Q3 - Q1
+
+Lower Fence = Q1 - (1.5 × IQR)
+
+Upper Fence = Q3 + (1.5 × IQR)
+```
+
+Reported values:
+
+| Measure | Value |
+|---|---:|
+| Q1 | 16 |
+| Q3 | 83 |
+| IQR | 67 |
+| Lower Fence | -84.5 |
+| Upper Fence | 183.5 |
+| Flagged Records | 30 |
+| Percentage Flagged | 3.0% |
+
+Hourly demand values outside the calculated boundaries are flagged for further investigation.
+
+**B. Standard Deviation Method**
+
+The `Anomaly_Analysis` worksheet applies a standard-deviation-based method to daily total demand.
+
+The calculation uses:
+
+```text
+Lower Threshold = Mean - (2 × Standard Deviation)
+
+Upper Threshold = Mean + (2 × Standard Deviation)
+```
+
+The workbook identifies 3 daily anomalies using these thresholds.
+
+These two methods analyse different levels of data:
+
+- IQR method: Hourly records.
+- Standard deviation method: Daily totals.
+
+Flagged observations should be investigated rather than automatically treated as incorrect data.
+
+**Objective:** Identify unusual demand patterns that may require additional attention.
+
+### Step 13: Dashboard Development and Reporting
+
+The final stage involved creating an Excel dashboard to communicate the major findings.
+
+The `Dashboard` worksheet contains eight charts:
+
+1. Hourly Demand Profile (Peak vs Off-Peak)
+2. Customer Composition (Casual vs Registered)
+3. Weekly Demand Distribution
+4. Demand Impact by Weather Condition
+5. Hourly User Behavior Breakdown
+6. Temperature vs Ride Volume Correlation
+7. Holiday vs Non-Holiday Demand
+8. Daily Demand Trend Over Time
+
+The presentation also proposes KPI cards for:
+
+- Total rides
+- Average rides per record
+- Registered customer share
+- IQR outlier count
+
+Date, hour, weekday, holiday and weather slicers are recommended for interactive reporting.
+
+**Objective:** Present the analytical results in a clear visual format to support decision-making.
+
+## 📈 8. Key Project Findings
+
+The major findings from the analysis are summarized below.
+
+| Analysis Area | Key Finding |
+|---|---|
+| Total Demand | 58,304 recorded rides |
+| Average Demand | 58.3 rides per hourly record |
+| Customer Segment | Registered users contribute 91.6% of rides |
+| Peak Demand Hour | 17:00 |
+| Morning Demand | 08:00 is another major demand period |
+| Lowest Demand Hour | 04:00 |
+| Weekday Demand | Higher average demand than weekends |
+| Highest Weekday | Thursday |
+| Weather Impact | Lower observed average demand during light rain/snow |
+| Temperature | Positive correlation of +0.23 |
+| Humidity | Negative correlation of -0.25 |
+| Windspeed | Weak positive correlation of +0.10 |
+| IQR Outlier Detection | 30 hourly observations flagged |
+| Daily Anomaly Detection | 3 daily anomalies identified |
+
+## 💡 9. Business Recommendations
+
+Based on the findings, the following recommendations can support bike-sharing operations.
+
+### 1. Improve Fleet Availability During Peak Hours
+
+The highest average demand occurs at 17:00, with another strong demand period around 08:00.
+
+Bicycle availability should be monitored carefully during these periods.
+
+### 2. Focus on Registered Customers
+
+Registered customers account for 91.6% of total recorded rides.
+
+Maintaining service reliability and customer satisfaction for registered users should be a priority.
+
+### 3. Improve Casual Customer Engagement
+
+Casual customers contribute 8.4% of recorded rides.
+
+Off-peak promotional campaigns and customer acquisition strategies could help increase casual usage.
+
+### 4. Consider Weather Conditions
+
+Weather categories show differences in observed demand.
+
+Weather information can be used as an additional planning indicator when estimating bicycle requirements.
+
+### 5. Monitor Unusual Demand Patterns
+
+Use anomaly detection results to identify unusual demand periods.
+
+Investigate these observations before making operational decisions.
+
+### 6. Improve Data Monitoring and Reporting
+
+Maintain regular data validation, document KPI definitions and monitor data completeness to improve reporting reliability.
+
+## ⚠️ 10. Project Limitations
+
+The following limitations were identified during the analysis:
+
+1. The dataset contains only 45 dates, so annual seasonal trends cannot be established.
+2. Some dates do not contain all 24 hourly records.
+3. Daily demand totals may be affected by incomplete hourly coverage.
+4. The Red Alert weather category contains only one record.
+5. Correlation analysis does not prove a causal relationship.
+6. The forecasting analysis is based on a short observation period.
+7. Station-level and geographical information is not available for precise bicycle redistribution planning.
+
+## 🚀 11. Future Improvements
+
+The project can be extended through the following improvements:
+
+- Collect a larger historical dataset covering multiple seasons and years.
+- Improve data completeness and validation.
+- Include station-level and geographical information.
+- Develop advanced demand prediction models using regression or machine learning.
+- Perform chronological forecast validation using MAE and RMSE.
+- Improve anomaly detection by considering weather, time and weekday.
+- Automate data refresh and dashboard reporting.
+- Introduce additional KPIs for operational performance monitoring.
+
+## ▶️ 12. How to Access the Project
+
+Clone the GitHub repository:
+
+```bash
+git clone https://github.com/jananijeni16-crypto/PROJECT-1-NEXTHIKES.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd PROJECT-1-NEXTHIKES
+```
+
+Open the Excel workbook:
+
+```text
+Nexthikes_Project 1.xlsm
+```
+
+Recommended steps:
+
+1. Open the workbook using Microsoft Excel.
+2. Review the raw and cleaned datasets.
+3. Explore the `Final_DataSet` worksheet.
+4. Review the PivotTables and statistical analysis worksheets.
+5. Explore the forecasting and anomaly detection worksheets.
+6. Open the `Dashboard` worksheet to view the visualizations.
+7. Review the PowerPoint presentation for the project summary and findings.
+
+**Note:** This repository contains an Excel-based project and does not currently include Python source scripts. A Python package installation is therefore not required. The workbook is macro-enabled, so only enable macros when you trust the file.
+
+## 🏁 13. Conclusion
+
+The Bike Sharing Demand Analysis project demonstrates how Microsoft Excel can be used to perform a complete data analytics workflow, from raw data preparation to business insight generation.
+
+Through data cleaning, consolidation, exploratory data analysis, statistical analysis, correlation analysis, forecasting, anomaly detection and dashboard development, the project identifies important patterns in bike-sharing demand.
+
+The analysis shows that bike rental demand is concentrated around commute-related hours, registered customers contribute the majority of rides, and observed demand varies across weather conditions.
+
+These findings provide a foundation for better fleet planning, customer engagement and operational monitoring. However, additional historical data and more complete daily observations are necessary before making long-term business decisions.
+
+
+
+---
+
+⭐ *If you find this project useful, feel free to explore the repository and its Excel analysis.*
