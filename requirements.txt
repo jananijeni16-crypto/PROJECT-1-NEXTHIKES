@@ -1,0 +1,9 @@
+# Project requirements:
+
+# This repository currently contains an Excel macro-enabled workbook (.xlsm)
+  and a PowerPoint presentation (.pptx). 
+
+# Software:
+
+# - Microsoft Excel (recommended for opening and reviewing the .xlsm workbook)
+# - Microsoft PowerPoint or a compatible presentation viewer.
