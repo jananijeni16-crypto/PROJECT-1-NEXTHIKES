@@ -741,7 +741,14 @@ The analysis shows that bike rental demand is concentrated around commute-relate
 
 These findings provide a foundation for better fleet planning, customer engagement and operational monitoring. However, additional historical data and more complete daily observations are necessary before making long-term business decisions.
 
+👩‍💻 Author
 
+Janani B
+Data Science Intern
+Nexthikes IT Solutions
+
+Project: Bike Sharing Demand Analysis Using Excel
+Submission Date: 10 October 2026
 
 ---
 
